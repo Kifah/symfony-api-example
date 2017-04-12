@@ -1,0 +1,7 @@
+AppBundle\Entity\UserPassAuthentication:
+    upass_credential{1..3}:
+        userPassWebsite: '@user_pass_website*'
+        user: '@users*'
+        username: <username()>
+        password: <password()>
+

@@ -1,0 +1,33 @@
+php-api:
+  build: .
+  dockerfile: Dockerfile-api
+  environment:
+     XDEBUG_CONFIG: 'idekey=PHPSTORM'
+     PHP_IDE_CONFIG: 'serverName=application'
+     ENV: 'dev'
+  container_name: php-api
+  command: sh /srv/scripts/post_install_api.sh
+  volumes:
+     - ./:/srv
+  working_dir: /srv/api
+  ports:
+    - 80:80
+    - 443:443
+
+  links:
+   - mysql
+
+
+
+mysql:
+  image: mysql:latest
+  container_name: mysql-api
+  ports:
+    - 3306:3306
+  environment:
+    MYSQL_ROOT_PASSWORD: my-secret-pw
+    MYSQL_DATABASE: 'api'
+    MYSQL_USER: 'api'
+    MYSQL_PASSWORD: 'api'
+
+

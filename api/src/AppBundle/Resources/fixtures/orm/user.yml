@@ -1,0 +1,15 @@
+AppBundle\Entity\User:
+    users1:
+        username: Foo1
+        email: <email()>
+        password: bariooo
+
+    users2:
+        username: Foo2
+        email: <email()>
+        password: agarioo
+
+    users3:
+        username: Khayoh2
+        email: <email()>
+        password: Ahyasab3i2

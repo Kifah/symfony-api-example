@@ -1,0 +1,16 @@
+security:
+    encoders:
+        AppBundle\Entity\User: bcrypt
+
+    providers:
+        database_users:
+            entity: { class: AppBundle:User }
+
+    firewalls:
+        api:
+            pattern: ^/api/
+            anonymous: true
+            stateless: true
+            guard:
+                authenticators:
+                    - 'jwt_token_authenticator'

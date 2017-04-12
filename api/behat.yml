@@ -1,0 +1,10 @@
+default:
+    suites:
+        api:
+            contexts:
+                - ApiContext:
+                    client: '@guzzle_client'
+            paths: [ %paths.base%/features/api ]
+
+    extensions:
+        Behat\Symfony2Extension: ~

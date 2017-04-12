@@ -1,0 +1,9 @@
+AppBundle\Entity\UserPassWebsite:
+    user_pass_website{1..3}:
+        name: <company()>
+        mainUrl: <url()>
+        loginPath: /basha
+        logoutPath: /khayoh
+        usernameSelector: faswa
+        passwordSelector: kal_naswa
+        submitSelector: my_button
