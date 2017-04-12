@@ -1,0 +1,19 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Fidry\\AliceDataFixtures\\": [
+                "./../../fixtures",
+                "./../../tests"
+            ]
+        }
+    },
+    "require-dev": {
+        "doctrine/data-fixtures": "^1.2",
+        "doctrine/orm": "^2.5",
+        "theofidry/composer-inheritance-plugin": "^1.0@dev"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "sort-packages": true
+    }
+}

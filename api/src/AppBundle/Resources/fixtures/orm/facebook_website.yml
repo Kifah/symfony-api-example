@@ -1,7 +1,0 @@
-AppBundle\Entity\FacebookWebsite:
-    facebook_website{1..3}:
-        name: <company()>
-        mainUrl: <url()>
-        loginPath: faswa
-        logoutPath: naswa
-        tokenParameter: 1234

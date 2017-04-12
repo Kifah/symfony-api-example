@@ -1,5 +1,0 @@
-AppBundle\Entity\FacebookAuthentication:
-    facebook_credential{1..3}:
-        facebookWebsite: '@facebook_website*'
-        user: '@users*'
-        facebookToken: <username()>

@@ -1,0 +1,64 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * This file is part of the Hautelook\AliceBundle package.
+ *
+ * (c) Baldur Rensch <brensch@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+
+// Debug only
+set_time_limit(0);
+
+require_once __DIR__.'/../vendor-bin/symfony/vendor/autoload.php';
+
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Debug\Debug;
+use Symfony\Component\HttpKernel\KernelInterface;
+
+$serverArgs = &$_SERVER['argv'];
+$kernelInput = 'NakedKernel';
+foreach ($serverArgs as $index => $arg) {
+    if ('-k' === $arg || '--kernel' === $arg) {
+        $kernelInput = $serverArgs[$index + 1];
+        unset($serverArgs[$index]);
+        unset($serverArgs[$index + 1]);
+        break;
+    }
+
+    if ('-k=' === substr($arg, 0, 3)) {
+        $kernelInput = substr($serverArgs[$index], 3);
+        unset($serverArgs[$index]);
+        break;
+    }
+
+    if ('--kernel=' === substr($arg, 0, 9)) {
+        $kernelInput = substr($serverArgs[$index], 9);
+        unset($serverArgs[$index]);
+        break;
+    }
+}
+$serverArgs = array_values($serverArgs);
+$kernelClass = 'Fidry\AliceDataFixtures\Bridge\Symfony\SymfonyApp\\'.$kernelInput;
+
+$input = new ArgvInput();
+$env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: uniqid());
+$debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
+
+if ($debug) {
+    Debug::enable();
+}
+
+error_reporting(E_ALL & ~E_USER_DEPRECATED);
+
+/** @var KernelInterface $kernel */
+$kernel = new $kernelClass($env, $debug);
+$application = new Application($kernel);
+
+$application->run($input);
+$kernel->shutdown();

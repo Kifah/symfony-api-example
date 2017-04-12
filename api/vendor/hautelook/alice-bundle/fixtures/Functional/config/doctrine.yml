@@ -1,0 +1,11 @@
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver: pdo_mysql
+                dbname: '%database.name%'
+                user: '%database.user%'
+                password: '%database.password%'
+    orm:
+        auto_mapping: true
