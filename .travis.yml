@@ -21,6 +21,7 @@ before_install:
 script:
   - docker-compose build
   - docker-compose up -d
-  - docker exec -it php-api  bash -c "vendor/bin/phpunit tests"
-  - docker exec -it php-api  bash -c "vendor/bin/behat"
+  - docker exec php-api  vendor/bin/phpunit tests  --verbose
+  - sleep 10
+  - docker exec php-api  vendor/bin/behat
   - docker-compose kill
