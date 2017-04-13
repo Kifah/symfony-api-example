@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Kifah/symfony-api-example.svg?branch=master)](https://travis-ci.org/Kifah/symfony-api-example)
+
 # symfony-api-example
 
 This is an example of a Symfony 3+ based API-Skeleton, featuring the use of the following technologies and solutions:
