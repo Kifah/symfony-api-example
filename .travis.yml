@@ -22,6 +22,8 @@ script:
   - docker-compose build
   - docker-compose up -d
   - docker exec php-api  vendor/bin/phpunit tests  --verbose
-  - sleep 10
+  - docker exec php-api  php bin/console doctrine:schema:update --force
+  - docker exec php-api  chmod -R a+rw /var/cache/api/ && chmod -R a+rw /var/log/api/
+  - docker exec php-api  php bin/console hautelook:fixtures:load  --no-interaction
   - docker exec php-api  vendor/bin/behat
   - docker-compose kill
