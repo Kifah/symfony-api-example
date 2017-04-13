@@ -24,7 +24,6 @@ script:
   - docker exec php-api  vendor/bin/phpunit tests  --verbose
   - docker exec php-api  chmod -R a+rw /var/cache/api/
   - docker exec php-api  chmod -R a+rw /var/log/api/
-  - docker exec php-api  composer update
   - docker exec php-api  php bin/console doctrine:schema:update --force
   - docker exec php-api  php bin/console hautelook:fixtures:load  --no-interaction
   - docker exec php-api  vendor/bin/behat
