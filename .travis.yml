@@ -1,8 +1,5 @@
-services:
-  - docker
+services: docker
 
-env:
-  COMPOSE_VERSION: 1.4.1
 
 script:
   - docker-compose build
