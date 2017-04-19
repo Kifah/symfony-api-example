@@ -32,8 +32,8 @@ class ApiController extends TokenController
      */
     public function agetAllUsersAction(Request $request)
     {
-        $user1 = ['username' => 'faswa', 'id' => 1, 'email' => 'faswa@naswa.com'];
-        $user2 = ['username' => 'naswa', 'id' => 2, 'email' => 'faswa@naswa1.com'];
+        $user1 = ['username' => 'foo', 'id' => 1, 'email' => 'foo@naswa.com'];
+        $user2 = ['username' => 'naswa', 'id' => 2, 'email' => 'foo@naswa1.com'];
         $data = [$user1, $user2];
         return $this->jsonResponse($data, 200, $request);
     }

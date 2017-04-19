@@ -24,7 +24,7 @@ class UserServiceTest extends TestCase
      */
     public function generateTokenWorks()
     {
-        $username = 'faswa';
+        $username = 'foo';
         $password = 'kalnaswa';
         $token = 'my_token';
         $mail = 'mail@dot.com';
@@ -53,7 +53,7 @@ class UserServiceTest extends TestCase
      */
     public function generateTokenGeneratesException()
     {
-        $username = 'faswa';
+        $username = 'foo';
         $password = 'kalnaswa';
         $user = Mockery::mock(User::class);
         $repo = Mockery::mock(EntityRepository::class);
@@ -72,7 +72,7 @@ class UserServiceTest extends TestCase
      */
     public function generateTokenBadCredentials()
     {
-        $username = 'faswa';
+        $username = 'foo';
         $password = 'kalnaswa';
         $user = Mockery::mock(User::class);
         $repo = Mockery::mock(EntityRepository::class);
